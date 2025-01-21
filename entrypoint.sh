@@ -1,5 +1,5 @@
 #!/bin/bash
 
 rm -f /app/tmp/pids/server.pid
-bin/setup
+bin/setup --skip-server
 exec "$@"
