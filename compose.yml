@@ -1,0 +1,37 @@
+services:
+  app:
+    image: ruby:3.2.2
+    tty: true
+    stdin_open: true
+    container_name: gaztoo_app
+    depends_on:
+      - postgres
+    entrypoint: ["sh", "./entrypoint.sh"]
+    env_file: .env
+    working_dir: /app
+    volumes:
+      - .:/app
+      - rubygems:/usr/local/bundle
+    ports:
+      - 3000:3000
+    command: ["rails", "server", "-b", "0.0.0.0"]
+
+  postgres:
+    container_name: gaztoo_pg
+    image: postgres:17.2-alpine
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  rubygems:
+  pgdata:
