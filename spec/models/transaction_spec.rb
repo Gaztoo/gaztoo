@@ -7,7 +7,7 @@ RSpec.describe Transaction, type: :model do
   describe 'validations' do
     subject { Transaction.new(user: user, is_paid: true, due_date: Time.current, category: category) }
 
-    it { should validate_inclusion_of(:is_paid).in_array([true, false]) }
+    it { should validate_inclusion_of(:is_paid).in_array([ true, false ]) }
     it { should validate_presence_of(:due_date) }
     it { should validate_presence_of(:value) }
     it { should belong_to(:user) }
@@ -21,7 +21,7 @@ RSpec.describe Transaction, type: :model do
 
     describe '.by_user' do
       it 'returns transactions for the current user' do
-        expect(Transaction.by_user).to match_array([transaction1])
+        expect(Transaction.by_user).to match_array([ transaction1 ])
       end
     end
 
