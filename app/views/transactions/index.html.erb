@@ -1,0 +1,8 @@
+<p>Despesas: <%= @total_spent %></p>
+<p>Total pago: <%= @total_paid %></p>
+
+<% @transactions.each do |transaction| %>
+  <p><%= transaction.id %><p>
+<% end %>
+
+<%= "Nenhuma despesa cadastrada neste período" if @transactions.empty? %>
