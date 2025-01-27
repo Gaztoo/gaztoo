@@ -1,6 +1,9 @@
+# Gaztoo - Simplifique seus gastos
+
+![Logo Gaztoo](./Gaztoo.png)
+
 # Description
 
-Gaztoo is a personal expenses management app
 
 # Setup with docker
 
