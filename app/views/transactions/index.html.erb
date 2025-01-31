@@ -1,8 +1,19 @@
-<p>Despesas: <%= @total_spent %></p>
-<p>Total pago: <%= @total_paid %></p>
+<% @total_spent = "R$ 180,00" %>
+<% @total_paid = "R$ 80,00" %>
+
+<div class="relative">
+  <div class="bg-dark_purple rounded-3xl px-5 py-3">
+    <p class="text-base text-light_gray font-medium">Despesas</p>
+    <p class="text-3xl text-white font-semibold mt-3"><%= @total_spent %></p>
+  </div>
+  <div class="bg-dark_purple relative flex justify-between items-center rounded-3xl px-5 h-21 mt-1">
+    <span class="text-sm text-white font-semibold">Total pago</span>
+    <span class="text-xl text-white font-bold"><%= @total_paid %></span>
+    <%= image_tag "half_moon.svg", class: "absolute right-30 bottom-0" %>
+  </div>
+  <%= image_tag "flower.svg", class: "absolute top-5 right-6" %>
+</div>
 
 <% @transactions.each do |transaction| %>
   <p><%= transaction.id %><p>
 <% end %>
-
-<%= "Nenhuma despesa cadastrada neste período" if @transactions.empty? %>
