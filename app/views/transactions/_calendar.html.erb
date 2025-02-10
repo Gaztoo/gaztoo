@@ -1,11 +1,17 @@
 <div class="flex items-center justify-between">
-  <div class="cursor-pointer left-arrow">
-    <%= image_tag('circle.svg', alt: 'left arrow')%>
+  <div >
+    <%= image_tag('circle.svg', alt: 'Seta esquerda', id: 'prev-month',  class: "cursor-pointer")%>
   </div>
-  <div class="font-bold">
-    <%= I18n.t("date.month_names")[Date.today.month].capitalize %> / <%= Date.today.year %>
+  <div class="flex font-bold" id = "current-date">
+    <div class="transition duration-100 ease-in-out" id="current-month">
+       <%= I18n.t("date.month_names")[@current_date.month].capitalize %>
+    </div>
+     /
+     <div class="transition duration-100 ease-in-out" id="current-year">
+      <%= @current_date.year %>
+    </div>
   </div>
-  <div class="cursor-pointer right-arrow">
-    <%= image_tag('circle.svg', alt: 'right arrow', style: 'transform: rotate(180deg)')%>
+  <div>
+    <%= image_tag('circle.svg', alt: 'Seta direita', id: 'next-month', class: "cursor-pointer", style: 'transform: rotate(180deg)')%>
   </div>
 </div>
